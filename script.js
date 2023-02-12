@@ -21,14 +21,25 @@ function createLinkedList(){
         value: "test List",
         next: null,
         append: function(value){
-            // add node to end of list
+            // create new node
+            const newNode = createNode(value)
+            // get to end of linked list
+            function endOfList(linkedList){
+                while(linkedList.next!==null){
+                    endOfList(linkedList.next)
+                }
+                return // chain of nodes
+            }
+           
+            // set new node at end of list
+            // .next: newNode,
+
             alert(value)
         },
 
     }
     return linkedList
 }
-
 const testLinkedList = createLinkedList()
 
 // create a node
@@ -39,5 +50,4 @@ function createNode(value, next){
     }
     return newNode
 }
-
 const testNode = createNode("Test Node", null)
