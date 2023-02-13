@@ -24,12 +24,7 @@ function createLinkedList(){
             // create new node
             const newNode = createNode(value)
             // get to end of linked list
-            function endOfList(linkedList){
-                while(linkedList.next!==null){
-                    endOfList(linkedList.next)
-                }
-                return // chain of nodes
-            }
+            
            
             // set new node at end of list
             // .next: newNode,
@@ -41,6 +36,18 @@ function createLinkedList(){
     return linkedList
 }
 const testLinkedList = createLinkedList()
+
+function endOfList(input){
+    if(typeof input.next === 'object' && input.next !== null){
+        endOfList(input.next)
+    } else{
+        console.log(input.value)
+        return input.value
+    }
+}
+
+
+
 
 // create a node
 function createNode(value, next){
