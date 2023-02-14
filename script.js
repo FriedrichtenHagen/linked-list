@@ -22,12 +22,19 @@ function createLinkedList(value){
         next: null,
         append: function(value, next){
             // create new node
-            const newNode = createNode(value, next)
+            const newNode = createNode(value)
             // get to end of linked list
             const lastNode = endOfList(this)
             // set new node at end of list
             lastNode.next = newNode
         },
+        prepend: function(value){
+            // create new node
+            // set next of new node to the current head
+            const newNode = createNode(value)
+            newNode.next = linkedList
+            return newNode
+        }
 
     }
     return linkedList
@@ -44,10 +51,10 @@ function endOfList(input){
 }
 
 // create a node
-function createNode(value, next){
+function createNode(value){
     const newNode = {
         value: value,
-        next: next,
+        next: null,
     }
     return newNode
 }
