@@ -16,38 +16,32 @@ let exampleLinkedList = {
 }
 
 // create a linked list
-function createLinkedList(){
+function createLinkedList(value){
     const linkedList = {
-        value: "test List",
+        value: value,
         next: null,
-        append: function(value){
+        append: function(value, next){
             // create new node
-            const newNode = createNode(value)
+            const newNode = createNode(value, next)
             // get to end of linked list
-            
-           
+            const lastNode = endOfList(this)
             // set new node at end of list
-            // .next: newNode,
-
-            alert(value)
+            lastNode.next = newNode
         },
 
     }
     return linkedList
 }
-const testLinkedList = createLinkedList()
+const testLinkedList = createLinkedList("headNode")
 
 function endOfList(input){
     if(typeof input.next === 'object' && input.next !== null){
         endOfList(input.next)
     } else{
-        console.log(input.value)
-        return input.value
+        console.log(input)
+        return input
     }
 }
-
-
-
 
 // create a node
 function createNode(value, next){
