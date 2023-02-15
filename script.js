@@ -20,26 +20,36 @@ function createLinkedList(value){
     const linkedList = {
         value: value,
         next: null,
-        append: function(value, next){
+        append: function(value){
             // create new node
-            const newNode = createNode(value)
+            let newNode = createNode(value)
             // get to end of linked list
-            const lastNode = endOfList(this)
+            let lastNode = endOfList(this)
             // set new node at end of list
             lastNode.next = newNode
+            return linkedList
         },
         prepend: function(value){
             // create new node
             // set next of new node to the current head
             const newNode = createNode(value)
             newNode.next = linkedList
-            return newNode
+            linkedList = newNode
+            return linkedList
+        },
+        size: function(){
+            let sizeCounter = 1;
+            if(typeof this.next === 'object' && this.next !== null){
+                endOfList(this.next)
+                sizeCounter++;
+            } 
+                console.log(sizeCounter)
+                return sizeCounter
         }
-
     }
     return linkedList
 }
-const testLinkedList = createLinkedList("headNode")
+const test = createLinkedList("headNode")
 
 function endOfList(input){
     if(typeof input.next === 'object' && input.next !== null){
@@ -48,6 +58,7 @@ function endOfList(input){
         console.log(input)
         return input
     }
+    
 }
 
 // create a node
