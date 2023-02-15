@@ -52,12 +52,14 @@ function createLinkedList(value){
 const test = createLinkedList("headNode")
 
 function endOfList(input){
+    let finalNode;
     if(typeof input.next === 'object' && input.next !== null){
-        endOfList(input.next)
+        finalNode = endOfList(input.next)
     } else{
-        console.log(input)
+        // save final node at base case of recursion
         return input
     }
+    return finalNode
     
 }
 
