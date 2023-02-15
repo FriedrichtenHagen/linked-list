@@ -17,51 +17,57 @@ let exampleLinkedList = {
 
 // create a linked list
 function createLinkedList(value){
-    const linkedList = {
-        value: value,
-        next: null,
+    let linkedList = {
+        head: {
+            value: value, 
+            next: null,
+        },
         append: function(value){
             // create new node
             let newNode = createNode(value)
             // get to end of linked list
-            let lastNode = endOfList(this)
+            let lastNode = this.lastNode()
             // set new node at end of list
             lastNode.next = newNode
-            return linkedList
+            return this
         },
         prepend: function(value){
             // create new node
-            // set next of new node to the current head
             const newNode = createNode(value)
-            newNode.next = linkedList
-            linkedList = newNode
-            return linkedList
+            // set original list as next 
+            let originalList = this
+            this.head.next = originalList
+            this.head.value = newNode.value
+            
+
+            // problem: this seems to create a logical loop
+
+            
+            return this
         },
         size: function(){
             let sizeCounter = 1;
-            if(typeof this.next === 'object' && this.next !== null){
-                endOfList(this.next)
-                sizeCounter++;
-            } 
-                console.log(sizeCounter)
-                return sizeCounter
+            let head = this
+            while(head.next !== null){
+                head = head.next   
+                sizeCounter++ 
+            }
+            return sizeCounter
+        }, 
+        lastNode: function(){
+            let currentHead = this.head
+            while(currentHead.next !== null){
+                currentHead = currentHead.next   
+            }
+            let finalNode = currentHead
+            return finalNode
         }
+
     }
     return linkedList
 }
 const test = createLinkedList("headNode")
 
-function endOfList(input){
-    let finalNode;
-    if(typeof input.next === 'object' && input.next !== null){
-        finalNode = endOfList(input.next)
-    } else{
-        // save final node at base case of recursion
-        return input
-    }
-    return finalNode
-    
-}
 
 // create a node
 function createNode(value){
