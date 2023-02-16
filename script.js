@@ -113,6 +113,16 @@ function createLinkedList(value){
                 return index
             }
             return "could not find string"
+        },
+        toString: function(){
+            let currentHead = this.head
+            let returnString = currentHead.value
+
+            while(currentHead.next !== null){
+                currentHead = currentHead.next   
+                returnString += `-> ${currentHead.value}`
+            }
+            return returnString
         }
     }
     return linkedList
