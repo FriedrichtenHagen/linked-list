@@ -84,8 +84,21 @@ function createLinkedList(value){
             } else{
                 alert("this method only works on list with a minimum length of 2")
             }
-            
         },
+        contains: function(passedValue){
+            // returns true if the passed in value is in the list and otherwise returns false
+            let currentHead = this.head
+            while(currentHead.next !== null){
+                if(currentHead.value===passedValue){
+                    return true
+                }
+                currentHead = currentHead.next   
+            }
+            if(currentHead.value===passedValue){
+                return true
+            }
+            return false
+        }
     }
     return linkedList
 }
