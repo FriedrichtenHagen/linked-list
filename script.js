@@ -70,6 +70,22 @@ function createLinkedList(value){
             }
             return currentHead
         },
+        pop: function(){
+            if(this.size()>1){
+                // remove the last node
+                // get the second to last node
+                let currentHead = this.head
+                while(currentHead.next.next !== null){
+                    currentHead = currentHead.next   
+                }
+                // set next to null
+                let secondToLastNode = currentHead
+                secondToLastNode.next = null
+            } else{
+                alert("this method only works on list with a minimum length of 2")
+            }
+            
+        },
     }
     return linkedList
 }
