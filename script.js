@@ -29,27 +29,19 @@ function createLinkedList(value){
             let lastNode = this.lastNode()
             // set new node at end of list
             lastNode.next = newNode
-            return this
         },
         prepend: function(value){
             // create new node
             const newNode = createNode(value)
             // set original list as next 
-            let originalList = this
-            this.head.next = originalList
-            this.head.value = newNode.value
-            
-
-            // problem: this seems to create a logical loop
-
-            
-            return this
+            newNode.next = this.head
+            this.head = newNode
         },
         size: function(){
             let sizeCounter = 1;
-            let head = this
-            while(head.next !== null){
-                head = head.next   
+            let currentHead = this.head
+            while(currentHead.next !== null){
+                currentHead = currentHead.next   
                 sizeCounter++ 
             }
             return sizeCounter
