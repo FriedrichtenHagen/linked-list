@@ -98,6 +98,21 @@ function createLinkedList(value){
                 return true
             }
             return false
+        },
+        find: function(passedValue){
+            let currentHead = this.head
+            let index = 0;
+            while(currentHead.next !== null){
+                if(currentHead.value===passedValue){
+                    return index
+                }
+                currentHead = currentHead.next  
+                index++ 
+            }
+            if(currentHead.value===passedValue){
+                return index
+            }
+            return "could not find string"
         }
     }
     return linkedList
