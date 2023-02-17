@@ -123,6 +123,20 @@ function createLinkedList(value){
                 returnString += `-> ${currentHead.value}`
             }
             return returnString
+        },
+        insertAt(value, index){
+            // create a node with given value
+            let newNode = createNode(value)
+            // find the index-1 node
+            let prevNode = this.at(index-1)
+            // save index-1.next as restOfList
+            let restOfList = prevNode.next
+            // set index-1.next = newNode
+            prevNode.next = newNode
+            // set newNode.next = restOfList
+            newNode.next = restOfList
+            // return changed list
+            return this
         }
     }
     return linkedList
