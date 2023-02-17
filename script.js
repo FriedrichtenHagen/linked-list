@@ -137,7 +137,20 @@ function createLinkedList(value){
             newNode.next = restOfList
             // return changed list
             return this
+        },
+        removeAt(index){
+            // find the index node
+            let removeNode = this.at(index)
+            // save the following nodes
+            let restOfList = removeNode.next
+            // find the index-1 node
+            let prevNode = this.at(index-1)
+            // attach restOfList to the next of previous node
+            prevNode.next = restOfList
+            // return changed list
+            return this
         }
+
     }
     return linkedList
 }
